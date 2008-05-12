@@ -1,0 +1,26 @@
+## Title: Alt-Tabber
+## Notes: Plays a noise when you're alt-tabbed for a ready check (even when sound is turned off)
+## Author: Ackis
+## eMail: ackis@shaw.ca
+## X-email: Ackis@shaw.ca
+
+## Interface: 20400
+## Version: 0.10
+## X-Revision: $Rev$
+## X-Date: $Date$
+
+## X-Category: Raid
+## X-Localizations: enUS
+## X-Website: 
+## X-Feedback: 
+## X-AceForum: 
+## X-LoadOn-Slash: /ips, /ipsloot
+
+## Dependencies:
+## X-Embeds: Ace3
+## OptionalDeps: Ace3
+## DefaultState: Enabled
+## LoadOnDemand: 0
+
+embeds.xml
+AltTabber.lua
