@@ -11,10 +11,9 @@
 
 ## X-Category: Raid
 ## X-Localizations: enUS
-## X-Website: 
-## X-Feedback: 
-## X-AceForum: 
-## X-LoadOn-Slash: /ips, /ipsloot
+## X-Website: http://www.wowace.com/wiki/AltTabber
+## X-Feedback: http://www.wowace.com/forums/index.php?topic=13439.0
+## X-AceForum: 13439
 
 ## Dependencies:
 ## X-Embeds: Ace3
