@@ -16,7 +16,7 @@ local GetCVar = GetCVar
 local PlaySoundFile = PlaySoundFile
 
 function addon:OnInitialize()
-
+	LibStub("LibAboutPanel").new(nil, "AltTabber")
 end
 
 function addon:OnEnable()
