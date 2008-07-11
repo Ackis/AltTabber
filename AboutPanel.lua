@@ -51,36 +51,34 @@ Currently it will not read localization versions of fields all fields.
 local lib, oldminor = LibStub:NewLibrary("LibAboutPanel", 1)
 if not lib then return end
 
-local GAME_LOCALE = GetLocale()
-
-if GAME_LOCALE ~= "frFR" then
-	GAME_LOCALE = "enUS"
-end
-
-local L = {
-	["About"] = true,
-	["Click and press Ctrl-C to copy"] = true,
-}
-
-if GAME_LOCALE == "enUS" then
-	return
-elseif GAME_LOCALE == "frFR" then
-	L {
-		["About"] = "à propos de",
-		["Click and press Ctrl-C to copy"] = true,
-	}
-end
-
-
 function lib.new(parent, addonname)
 	local frame = CreateFrame("Frame", nil, UIParent)
-	frame.name, frame.parent, frame.addonname = not parent and gsub(addonname," ","") or L["About"], parent, gsub(addonname," ","") -- Remove spaces from addonname because GetMetadata doesn't like that
+	frame.name, frame.parent, frame.addonname = not parent and gsub(addonname," ","") or "About", parent, gsub(addonname," ","") -- Remove spaces from addonname because GetMetadata doesn't like that
 	frame:Hide()
 	frame:SetScript("OnShow", lib.OnShow)
 	InterfaceOptions_AddCategory(frame)
 	return frame
 end
 
+--[[
+
+local GAME_LOCALE = GetLocale()
+
+if GAME_LOCALE ~= "frFR" then
+	GAME_LOCALE = "enUS"
+end
+
+local L = {}
+
+if GAME_LOCALE == "enUS" then
+	L["About"] = true
+	L["Click and press Ctrl-C to copy"] = true
+elseif GAME_LOCALE == "frFR" then
+	L["About"] = "à propos de"
+	L["Click and press Ctrl-C to copy"] = true
+end
+
+]]--
 
 local editbox = CreateFrame('EditBox', nil, UIParent)
 editbox:Hide()
@@ -132,16 +130,21 @@ local haseditbox = {["Version"] = true, ["X-Website"] = true, ["X-Email"] = true
 local function HideTooltip() GameTooltip:Hide() end
 local function ShowTooltip(self)
 	GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT")
-	GameTooltip:SetText(L["Click and press Ctrl-C to copy"])
+	--GameTooltip:SetText(L["Click and press Ctrl-C to copy"])
+	GameTooltip:SetText("Click and press Ctrl-C to copy")
 end
 function lib.OnShow(frame)
+--[[
 	local notefield = "Notes"
-	local notes
+
 	if (GAME_LOCALE ~= "enUS") then
 		notefield = notefield .. "-" .. GAME_LOCALE
 	end
 
 	local notes = GetAddOnMetadata(frame.addonname, notefield) or GetAddOnMetadata(frame.addonname, "Notes")
+]]--
+
+	local notes = GetAddOnMetadata(frame.addonname, "Notes")
 
 	local title = frame:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
 	title:SetPoint("TOPLEFT", 16, -16)
