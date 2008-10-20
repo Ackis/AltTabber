@@ -1,7 +1,7 @@
 ## Title: Alt-Tabber
 
-## Notes: Plays a noise when you're alt-tabbed for a ready check (even when sound is turned off)
-## Notes-enUS: Plays a noise when you're alt-tabbed for a ready check (even when sound is turned off)
+## Notes: Plays a noise when you're alt-tabbed for a ready check (even when sound is turned off).
+## Notes-enUS: Plays a noise when you're alt-tabbed for a ready check (even when sound is turned off).
 
 ## Author: Ackis
 ## X-Author-Server: Illidan US
@@ -11,26 +11,20 @@
 ## X-License: MIT modified with notification clause
 ## X-Donate: Send me UDE Point codes, a Murky Code, or donate a few bucks/hours at your local animal shelter.
 
-## Interface: 20400
-## Version: 1.2
+## Interface: 30000
+## Version: 1.23
 ## X-Revision: $Rev$
 ## X-Date: $Date$
 
-## X-credits: 
-
 ## X-Category: Raid
-## X-Localizations: enUS
+## X-Localizations: enUS, frFR, deDE, koKR, ruRU, zhCN, esES, zhTW
 ## X-Website: http://www.wowwiki.com/AltTabber/
-## X-Feedback: http://www.curse.com/downloads/details/12774/
-## X-AceForum: 13439
-## X-RelSite-Curse: 12774
+## X-Feedback: http://wow.curse.com/downloads/wow-addons/details/alttab.aspx
 
 ## Dependencies:
-## X-Embeds: Ace3
 ## OptionalDeps: Ace3
 ## DefaultState: Enabled
 ## LoadOnDemand: 0
 
 embeds.xml
-AboutPanel.lua
 AltTabber.lua
