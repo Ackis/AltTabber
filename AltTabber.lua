@@ -94,7 +94,11 @@ end
 
 function addon:OnInitialize()
 
-	LibStub("LibAboutPanel").new(nil, "AltTabber")
+	if LibStub:GetLibrary("LibAboutPanel", true) then
+		LibStub("LibAboutPanel").new(nil, "AltTabber")
+	else
+		self:Print("Lib AboutPanel not loaded.")
+	end
 
 end
 
