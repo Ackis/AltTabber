@@ -4,7 +4,7 @@
 ## Notes-enUS: Plays a noise when you're alt-tabbed for a ready check (even when sound is turned off).
 
 ## Author: Ackis
-## X-Author-Server: haomarush US
+## X-Author-Server: Haomarush US
 ## X-Author-Faction: Horde
 ## eMail: ackis AT shaw DOT ca
 ## X-email: ackis AT shaw DOT ca
