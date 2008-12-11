@@ -2,8 +2,12 @@
 ****************************************************************************************
 Alt-Tabber
 
-$Date$
-$Rev$
+File date: @file-date-iso@ 
+File revision: @file-revision@ 
+Project revision: @project-revision@
+Project version: @project-version@
+
+Author: Ackis
 
 ****************************************************************************************
 
@@ -108,7 +112,8 @@ function addon:READY_CHECK()
 			self:Print(L["BGSNDON"])
 			SetCVar("Sound_EnableSoundWhenGameIsInBG", "1")
 		end
-		PlaySoundFile("Sound\\interface\\ReadyCheck.wav")
+		--PlaySoundFile("Sound\\interface\\ReadyCheck.wav")
 	end
+	PlaySoundFile("Sound\\interface\\ReadyCheck.wav")
 
 end

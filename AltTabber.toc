@@ -4,17 +4,17 @@
 ## Notes-enUS: Plays a noise when you're alt-tabbed for a ready check (even when sound is turned off).
 
 ## Author: Ackis
-## X-Author-Server: Illidan US
+## X-Author-Server: haomarush US
 ## X-Author-Faction: Horde
 ## eMail: ackis AT shaw DOT ca
 ## X-email: ackis AT shaw DOT ca
 ## X-License: MIT modified with notification clause
-## X-Donate: Send me UDE Point codes, a Murky Code, or donate a few bucks/hours at your local animal shelter.
+## X-Donate: Donate a few bucks/hours at your local animal shelter, send me UDE Point codes, or a Murky Code.
 
 ## Interface: 30000
-## Version: 1.23
-## X-Revision: $Rev$
-## X-Date: $Date$
+## Version: 1.24
+## X-Revision: @project-revision@
+## X-Date: @file-date-iso@
 
 ## X-Category: Raid
 ## X-Localizations: enUS, frFR, deDE, koKR, ruRU, zhCN, esES, zhTW
