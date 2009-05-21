@@ -1,13 +1,16 @@
-## Title: Alt-Tabber @project-version@
+## Title: Alt-Tabber
 
 ## Notes: Plays a noise when you're alt-tabbed for a ready check (even when sound is turned off).
 
 ## Author: Ackis
 ## eMail: ackis AT shaw DOT ca
-## X-Donate: Donate a few bucks/hours at your local animal shelter, send me UDE Point codes, or a Murky Code.
+## X-Author-Faction = Horde
+## X-Author-Server = Thunderlord US
+
+## X-Donate: http://www.curseforge.com/projects/alttab/#w_donations
 
 ## Interface: 30100
-## Version: 1.25
+## Version: 1.3
 ## X-Revision: @project-version@
 ## X-Date: @file-date-iso@
 
