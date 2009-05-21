@@ -4,13 +4,13 @@
 
 ## Author: Ackis
 ## eMail: ackis AT shaw DOT ca
-## X-Author-Faction = Horde
-## X-Author-Server = Thunderlord US
+## X-Author-Faction: Horde
+## X-Author-Server: Thunderlord US
 
 ## X-Donate: http://www.curseforge.com/projects/alttab/#w_donations
 
 ## Interface: 30100
-## Version: 1.3
+## Version: 1.4
 ## X-Revision: @project-version@
 ## X-Date: @file-date-iso@
 

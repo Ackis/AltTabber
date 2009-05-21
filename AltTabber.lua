@@ -83,15 +83,6 @@ local L = LibStub("AceLocale-3.0"):GetLocale("AltTabber", false)
 local GetCVar = GetCVar
 local PlaySoundFile = PlaySoundFile
 
-local guildname = GetGuildInfo("player")
-
-if (guildname == "Team Ice") then
-
-	addon:Print("Not allowed to use this addon.")
-	return
-
-end
-
 function addon:OnInitialize()
 
 	if LibStub:GetLibrary("LibAboutPanel", true) then
