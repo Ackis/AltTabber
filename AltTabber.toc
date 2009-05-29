@@ -10,7 +10,7 @@
 ## X-Donate: http://www.curseforge.com/projects/alttab/#w_donations
 
 ## Interface: 30100
-## Version: 1.4
+## Version: 1.5
 ## X-Revision: @project-version@
 ## X-Date: @file-date-iso@
 
