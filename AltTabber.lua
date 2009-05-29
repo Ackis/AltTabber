@@ -22,9 +22,10 @@ local addon		= LibStub("AceAddon-3.0"):GetAddon(MODNAME)
 do
 	-- enUS stuff
 	local L = LibStub("AceLocale-3.0"):NewLocale(MODNAME, "enUS", true)
-	if L then
-		L["BGSNDON"] = "Enabling sound in background so you can hear ready checks while alt-tabbed."
-	end
+
+	if not L then return end
+
+	--@localization(locale="enUS", format="lua_additive_table", handle-unlocalized="english", escape-non-ascii=false, same-key-is-true=true)@
 
 	-- enGB stuff
 	local L = LibStub("AceLocale-3.0"):NewLocale(MODNAME, "enGB")
