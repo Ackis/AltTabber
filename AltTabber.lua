@@ -29,9 +29,10 @@ do
 
 	-- deDE stuff
 	local L = LibStub("AceLocale-3.0"):NewLocale(MODNAME, "deDE")
-	if L then
-		L["BGSNDON"] = "Enabling sound in background so you can hear ready checks while alt-tabbed."
-	end
+
+	if not L then return end
+
+	--@localization(locale="deDE", format="lua_additive_table", handle-unlocalized="ignore", escape-non-ascii=false, same-key-is-true=true)@
 
 	-- frFR stuff
 	local L = LibStub("AceLocale-3.0"):NewLocale(MODNAME, "frFR")
