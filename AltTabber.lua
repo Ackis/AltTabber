@@ -57,21 +57,24 @@ do
 
 	-- koKR stuff
 	local L = LibStub("AceLocale-3.0"):NewLocale(MODNAME, "koKR")
-	if L then
-		L["BGSNDON"] = "Enabling sound in background so you can hear ready checks while alt-tabbed."
-	end
+
+	if not L then return end
+
+	--@localization(locale="deDE", format="lua_additive_table", handle-unlocalized="ignore", escape-non-ascii=false, same-key-is-true=true)@
 
 	-- esES stuff
 	local L = LibStub("AceLocale-3.0"):NewLocale(MODNAME, "esES")
-	if L then
-		L["BGSNDON"] = "Enabling sound in background so you can hear ready checks while alt-tabbed."
-	end
+
+	if not L then return end
+
+	--@localization(locale="esES", format="lua_additive_table", handle-unlocalized="ignore", escape-non-ascii=false, same-key-is-true=true)@
 
 	-- esMX stuff
 	local L = LibStub("AceLocale-3.0"):NewLocale(MODNAME, "esMX")
-	if L then
-		L["BGSNDON"] = "Enabling sound in background so you can hear ready checks while alt-tabbed."
-	end
+
+	if not L then return end
+
+	--@localization(locale="esMX", format="lua_additive_table", handle-unlocalized="ignore", escape-non-ascii=false, same-key-is-true=true)@
 
 end
 
