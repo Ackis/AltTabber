@@ -36,9 +36,10 @@ do
 
 	-- frFR stuff
 	local L = LibStub("AceLocale-3.0"):NewLocale(MODNAME, "frFR")
-	if L then
-		L["BGSNDON"] = "Enabling sound in background so you can hear ready checks while alt-tabbed."
-	end
+
+	if not L then return end
+
+	--@localization(locale="frFR", format="lua_additive_table", handle-unlocalized="ignore", escape-non-ascii=false, same-key-is-true=true)@
 
 	-- zhCN stuff
 	local L = LibStub("AceLocale-3.0"):NewLocale(MODNAME, "zhCN")
