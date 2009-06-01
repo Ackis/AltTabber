@@ -103,8 +103,20 @@ function addon:OnEnable()
 	self:Print("Sound_EnableSoundWhenGameIsInBG " .. GetCVar("Sound_EnableSoundWhenGameIsInBG"))
 	self:RegisterEvent("CVAR_UPDATED")
 	self:RegisterEvent("CVAR_UPDATE")
+	self:RegisterEvent("PVPQUEUE_ANYWHERE_UPDATE_AVAILABLE")
+	self:RegisterEvent("UPDATE_BATTLEFIELD_STATUS")
 	--@end-alpha@
 
+end
+
+--@alpha@
+
+function addon:PVPQUEUE_ANYWHERE_UPDATE_AVAILABLE()
+	self:Print("PVPQUEUE_ANYWHERE_UPDATE_AVAILABLE")
+end
+
+function addon:UPDATE_BATTLEFIELD_STATUS()
+	self:Print("UPDATE_BATTLEFIELD_STATUS")
 end
 
 function addon:CVAR_UPDATE()
@@ -124,6 +136,8 @@ function addon:CVAR_UPDATED()
 	self:Print("Sound_EnableSoundWhenGameIsInBG " .. GetCVar("Sound_EnableSoundWhenGameIsInBG"))
 
 end
+
+--@end-alpha@
 
 function addon:READY_CHECK()
 
