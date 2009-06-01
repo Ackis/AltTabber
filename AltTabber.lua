@@ -97,6 +97,32 @@ function addon:OnEnable()
 
 	self:RegisterEvent("READY_CHECK")
 
+	--@alpha@
+	self:Print("Sound_EnableAllSound " .. GetCVar("Sound_EnableAllSound"))
+	self:Print("Sound_EnableSFX " .. GetCVar("Sound_EnableSFX"))
+	self:Print("Sound_EnableSoundWhenGameIsInBG " .. GetCVar("Sound_EnableSoundWhenGameIsInBG"))
+	self:RegisterEvent("CVAR_UPDATED")
+	self:RegisterEvent("CVAR_UPDATE")
+	--@end-alpha@
+
+end
+
+function addon:CVAR_UPDATE()
+
+	self:Print("CVAR_UPDATE")
+	self:Print("Sound_EnableAllSound " .. GetCVar("Sound_EnableAllSound"))
+	self:Print("Sound_EnableSFX " .. GetCVar("Sound_EnableSFX"))
+	self:Print("Sound_EnableSoundWhenGameIsInBG " .. GetCVar("Sound_EnableSoundWhenGameIsInBG"))
+
+end
+
+function addon:CVAR_UPDATED()
+
+	self:Print("CVAR_UPDATED")
+	self:Print("Sound_EnableAllSound " .. GetCVar("Sound_EnableAllSound"))
+	self:Print("Sound_EnableSFX " .. GetCVar("Sound_EnableSFX"))
+	self:Print("Sound_EnableSoundWhenGameIsInBG " .. GetCVar("Sound_EnableSoundWhenGameIsInBG"))
+
 end
 
 function addon:READY_CHECK()
