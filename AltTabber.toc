@@ -26,4 +26,5 @@
 
 embeds.xml
 
+Localization.lua
 AltTabber.lua

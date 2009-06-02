@@ -17,70 +17,12 @@ local MODNAME	= "AltTabber"
 AltTabber		= LibStub("AceAddon-3.0"):NewAddon(MODNAME, "AceConsole-3.0", "AceEvent-3.0")
 
 local addon		= LibStub("AceAddon-3.0"):GetAddon(MODNAME)
+local AL3		= LibStub("AceLocale-3.0")
 
--- Localization
-do
-	-- enUS stuff
-	local L = LibStub("AceLocale-3.0"):NewLocale(MODNAME, "enUS", true)
-
-	if not L then return end
-
-	--@localization(locale="enUS", format="lua_additive_table", handle-unlocalized="english", escape-non-ascii=false, same-key-is-true=true)@
-
-	-- deDE stuff
-	local L = LibStub("AceLocale-3.0"):NewLocale(MODNAME, "deDE")
-
-	if not L then return end
-
-	--@localization(locale="deDE", format="lua_additive_table", handle-unlocalized="ignore", escape-non-ascii=false, same-key-is-true=true)@
-
-	-- frFR stuff
-	local L = LibStub("AceLocale-3.0"):NewLocale(MODNAME, "frFR")
-
-	if not L then return end
-
-	--@localization(locale="frFR", format="lua_additive_table", handle-unlocalized="ignore", escape-non-ascii=false, same-key-is-true=true)@
-
-	-- zhCN stuff
-	local L = LibStub("AceLocale-3.0"):NewLocale(MODNAME, "zhCN")
-
-	if not L then return end
-
-	--@localization(locale="zhCN", format="lua_additive_table", handle-unlocalized="ignore", escape-non-ascii=false, same-key-is-true=true)@
-
-	-- zhTW stuff
-	local L = LibStub("AceLocale-3.0"):NewLocale(MODNAME, "zhTW")
-
-	if not L then return end
-
-	--@localization(locale="zhTW", format="lua_additive_table", handle-unlocalized="ignore", escape-non-ascii=false, same-key-is-true=true)@
-
-	-- koKR stuff
-	local L = LibStub("AceLocale-3.0"):NewLocale(MODNAME, "koKR")
-
-	if not L then return end
-
-	--@localization(locale="koKR", format="lua_additive_table", handle-unlocalized="ignore", escape-non-ascii=false, same-key-is-true=true)@
-
-	-- esES stuff
-	local L = LibStub("AceLocale-3.0"):NewLocale(MODNAME, "esES")
-
-	if not L then return end
-
-	--@localization(locale="esES", format="lua_additive_table", handle-unlocalized="ignore", escape-non-ascii=false, same-key-is-true=true)@
-
-	-- esMX stuff
-	local L = LibStub("AceLocale-3.0"):NewLocale(MODNAME, "esMX")
-
-	if not L then return end
-
-	--@localization(locale="esMX", format="lua_additive_table", handle-unlocalized="ignore", escape-non-ascii=false, same-key-is-true=true)@
-
-end
-
-local L = LibStub("AceLocale-3.0"):GetLocale(MODNAME, false)
+local L = AL3:GetLocale(MODNAME, false)
 
 local GetCVar = GetCVar
+local SetCVar = SetCVar
 local PlaySoundFile = PlaySoundFile
 
 function addon:OnInitialize()
@@ -98,9 +40,6 @@ function addon:OnEnable()
 	self:RegisterEvent("READY_CHECK")
 
 	--@alpha@
-	self:Print("Sound_EnableAllSound " .. GetCVar("Sound_EnableAllSound"))
-	self:Print("Sound_EnableSFX " .. GetCVar("Sound_EnableSFX"))
-	self:Print("Sound_EnableSoundWhenGameIsInBG " .. GetCVar("Sound_EnableSoundWhenGameIsInBG"))
 	self:RegisterEvent("CVAR_UPDATED")
 	self:RegisterEvent("CVAR_UPDATE")
 	self:RegisterEvent("PVPQUEUE_ANYWHERE_UPDATE_AVAILABLE")
@@ -141,16 +80,28 @@ end
 
 function addon:READY_CHECK()
 
+	local Sound_EnableSFX = GetCVar("Sound_EnableSFX")
+	local Sound_EnableAllSound = GetCVar("Sound_EnableAllSound")
+
 	-- Abuses a bug? in that PlaySoundFile will still play
 	-- If sound is off, we want to play the readycheck
-	if (GetCVar("Sound_EnableSFX") == "0") then
+	if (Sound_EnableSFX == "0") then
 		-- If background sound is on, we can't do anything
 		if (GetCVar("Sound_EnableSoundWhenGameIsInBG") == "0") then
 			self:Print(L["BGSNDON"])
-			-- Change the option to be on
 			SetCVar("Sound_EnableSoundWhenGameIsInBG", "1")
+		-- If the entire sound processing is off, we can't deal with it
+		elseif (Sound_EnableAllSound == "0") then
+			self:Print(L["ENABLESOUNDSYSTEM"])
+			SetCVar("Sound_EnableAllSound","1")
+			-- Disable all the other types of sounds
+			SetCVar("Sound_EnableSFX","0")
+			SetCVar("Sound_EnableAmbience","0")
+			SetCVar("Sound_EnableMusic","0")
+		-- We just have sound off so we can play it
 		else
 			PlaySoundFile("Sound\\interface\\ReadyCheck.wav")
 		end
 	end
+
 end
