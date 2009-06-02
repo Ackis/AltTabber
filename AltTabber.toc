@@ -1,6 +1,6 @@
 ## Title: Alt-Tabber
 
-## Notes: Plays a noise when you're alt-tabbed for a ready check (even when sound is turned off).
+## Notes: Plays a noise when you're alt-tabbed for a ready check and pvp queues (even when sound is turned off).
 
 ## Author: Ackis
 ## eMail: ackis AT shaw DOT ca

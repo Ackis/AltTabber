@@ -1,5 +1,5 @@
 == What it does ==
-AltTabber is a small addon which will play the ready check noise during raids even if your sound is turned off.
+AltTabber is a small addon which will play the ready check noise during raids and the pvp queue sound even if your sound is turned off.
 
 == Where to get it ==
 *[http://www.wowace.com/projects/alttab/files/ WoW Ace] - Often Beta quality
