@@ -42,7 +42,7 @@ function addon:OnEnable()
 	-- If the Battlefield Entry doesn't have an onshow, create one.
 	if (not StaticPopupDialogs["CONFIRM_BATTLEFIELD_ENTRY"].OnShow) then
 		StaticPopupDialogs["CONFIRM_BATTLEFIELD_ENTRY"].OnShow = function()
-			PlaySoundFile("Sound\\interface\\ReadyCheck.wav")
+			PlaySoundFile("Sound\\Spells\\PVPEnterQueue.wav")
 		end
 	end
 
