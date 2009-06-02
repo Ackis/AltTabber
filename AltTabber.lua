@@ -34,7 +34,7 @@ function addon:OnInitialize()
 	end
 
 end
-
+-- http://www.wowwiki.com/index.php?title=API_PlaySoundFile&oldid=1805695
 function addon:OnEnable()
 
 	self:RegisterEvent("READY_CHECK")
