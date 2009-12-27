@@ -1,6 +1,6 @@
 ## Title: Alt-Tabber
 
-## Notes: Plays a noise when you're alt-tabbed for a ready check and pvp queues (even when sound is turned off).
+## Notes: Plays a noise when you're alt-tabbed for a ready check and pvp queues (even when sound is turned off).  Also plays noise when you're alt-tabbed for the LFG queue.
 
 ## Author: Ackis
 ## eMail: ackis AT shaw DOT ca
@@ -9,8 +9,8 @@
 
 ## X-Donate: http://www.curseforge.com/projects/alttab/#w_donations
 
-## Interface: 30200
-## Version: 1.51
+## Interface: 30300
+## Version: 1.6
 ## X-Revision: @project-version@
 ## X-Date: @file-date-iso@
 
