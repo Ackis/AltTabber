@@ -39,6 +39,7 @@ end
 function addon:OnEnable()
 
 	self:RegisterEvent("READY_CHECK")
+	self:RegisterEvent("LFG_PROPOSAL_SHOW")
 
 	-- If the Battlefield Entry doesn't have an onshow, create one.
 	if (not StaticPopupDialogs["CONFIRM_BATTLEFIELD_ENTRY"].OnShow) then
@@ -74,5 +75,12 @@ function addon:READY_CHECK()
 			PlaySoundFile("Sound\\interface\\ReadyCheck.wav")
 		end
 	end
+
+end
+
+function addon:LFG_PROPOSAL_SHOW()
+
+	-- Hack, lets just call the ready check code so that we still play some sound
+	self:READY_CHECK()
 
 end
