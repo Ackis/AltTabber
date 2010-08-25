@@ -10,8 +10,8 @@
 ## X-Donate: http://www.curseforge.com/projects/alttab/#w_donations
 
 ## Interface: 30300
-## Version: 1.6
-## X-Revision: @project-version@
+## Version: @project-version@
+## X-Revision: @project-abbreviated-hash@
 ## X-Date: @file-date-iso@
 
 ## X-Category: Raid
