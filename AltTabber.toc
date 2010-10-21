@@ -9,7 +9,8 @@
 
 ## X-Donate: http://www.curseforge.com/projects/alttab/#w_donations
 
-## Interface: 30300
+## Interface: 40000
+## X-Compatible-With: 40000
 ## Version: @project-version@
 ## X-Revision: @project-abbreviated-hash@
 ## X-Date: @file-date-iso@
