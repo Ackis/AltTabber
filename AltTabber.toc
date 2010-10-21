@@ -17,7 +17,7 @@
 
 ## X-Category: Raid
 ## X-Localizations: enUS, frFR, deDE, koKR, ruRU, zhCN, esES, zhTW
-## X-Website: http://www.wowwiki.com/AltTabber/
+## X-Website: http://www.wowpedia.org/AltTabber/
 ## X-Feedback: http://wow.curse.com/downloads/wow-addons/details/alttab.aspx
 
 ## Dependencies:
