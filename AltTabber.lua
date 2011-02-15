@@ -73,7 +73,7 @@ function addon:READY_CHECK()
 			SetCVar("Sound_EnableMusic","0")
 		-- We just have sound off so we can play it
 		else
-			PlaySoundFile("Sound\\interface\\ReadyCheck.wav")
+			PlaySoundFile("Sound\\interface\\ReadyCheck.wav", "Master")
 		end
 	end
 
