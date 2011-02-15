@@ -5,7 +5,7 @@
 ## Author: Ackis
 ## eMail: ackis AT shaw DOT ca
 ## X-Author-Faction: Horde
-## X-Author-Server: Thunderlord US
+## X-Author-Server: Scarlet Crusade US
 
 ## X-Donate: http://www.curseforge.com/projects/alttab/#w_donations
 
