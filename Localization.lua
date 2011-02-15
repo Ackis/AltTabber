@@ -1,6 +1,6 @@
 local MODNAME	= "AltTabber"
 
-local AL3		= LibStub("AceLocale-3.0")
+local AL3		= LibStub("AceLocale-3.1")
 
 -- Localization
 -- enUS stuff
