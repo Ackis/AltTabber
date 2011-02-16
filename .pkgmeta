@@ -18,9 +18,8 @@ externals:
  libs/CallbackHandler-1.0:
   url: svn://svn.wowace.com/wow/callbackhandler/mainline/trunk/CallbackHandler-1.0
   tag: latest
- libs/AceLocale-3.1:
-  #url: svn://svn.wowace.com/wow/ace3/mainline/trunk/AceLocale-3.1
-  url: svn://svn.wowace.com/wow/ace3/mainline/branches/AceLocale-3.1
+ libs/AceLocale-3.0:
+  url: svn://svn.wowace.com/wow/ace3/mainline/trunk/AceLocale-3.0
  libs/AceEvent-3.0:
   url: svn://svn.wowace.com/wow/ace3/mainline/trunk/AceEvent-3.0
  libs/AceConsole-3.0:

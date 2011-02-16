@@ -17,7 +17,7 @@ local MODNAME	= "AltTabber"
 AltTabber		= LibStub("AceAddon-3.0"):NewAddon(MODNAME, "AceConsole-3.0", "AceEvent-3.0")
 
 local addon		= LibStub("AceAddon-3.0"):GetAddon(MODNAME)
-local AL3		= LibStub("AceLocale-3.1")
+local AL3		= LibStub("AceLocale-3.0")
 
 local L = AL3:GetLocale(MODNAME, false)
 
