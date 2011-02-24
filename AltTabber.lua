@@ -62,14 +62,67 @@ function addon:OnInitialize()
 
 end
 
+-- Checks the CVars to determine if we can actually play sound.
+local function CheckCVars()
+
+	local Sound_EnableSFX = GetCVar("Sound_EnableSFX")
+	local Sound_EnableAllSound = GetCVar("Sound_EnableAllSound")
+	local Sound_MasterVolume = GetCVar("Sound_MasterVolume")
+	local Sound_EnableSoundWhenGameIsInBG = GetCVar("Sound_EnableSoundWhenGameIsInBG")
+
+	-- If our master volume is set to 0.0 then we won't hear a damn thing.
+	if (Sound_MasterVolume == 0.0) then
+		self:Print(L["MASTERSOUNDOFF"])
+	end
+
+	-- If sound is off, we want to play the readycheck
+	if (Sound_EnableSFX == "0") then
+
+		-- If background sound is off, we can't do anything
+		-- Set the background sound to on and inform the user
+		if (Sound_EnableSoundWhenGameIsInBG == "0") then
+			self:Print(L["BGSNDON"])
+			SetCVar("Sound_EnableSoundWhenGameIsInBG", "1")
+			return false
+
+		-- If the entire sound processing is off, we can't play sound.
+		-- Set the 
+		elseif (Sound_EnableAllSound == "0") then
+			self:Print(L["ENABLESOUNDSYSTEM"])
+			SetCVar("Sound_EnableAllSound","1")
+			-- Disable all the other types of sounds
+			SetCVar("Sound_EnableSFX","0")
+			SetCVar("Sound_EnableAmbience","0")
+			SetCVar("Sound_EnableMusic","0")
+			return false
+
+		-- We just have sound off, but conditions are correct so we will
+		-- hear the sounds.
+		else
+			return true
+		end
+	end
+
+end
+
+-- Plays the PVP queue popping sound.
 local function PlayPVPSound()
-	PlaySoundFile("Sound\\Spells\\PVPEnterQueue.wav", "Master")
+	if CheckCVars() then
+		PlaySoundFile("Sound\\Spells\\PVPEnterQueue.wav", "Master")
+	end
+end
+
+-- Plays the ready check sound
+local function PlayReadyCheck()
+	if CheckCVars() then
+		PlaySoundFile("Sound\\interface\\ReadyCheck.wav", "Master")
+	end
 end
 
 function addon:OnEnable()
 
-	self:RegisterEvent("READY_CHECK")
-	self:RegisterEvent("LFG_PROPOSAL_SHOW")
+	self:RegisterEvent("READY_CHECK") -- Raid Ready Checks
+	self:RegisterEvent("LFG_PROPOSAL_SHOW") -- LFG System
 	self:RegisterEvent("BATTLEFIELD_MGR_ENTRY_INVITE") -- World PVP (Tol Barad, WG)
 
 	-- Hook each battleground queue so that it plays a sound when the pop-up shows up.
@@ -84,48 +137,18 @@ end
 
 function addon:READY_CHECK()
 
-	local Sound_EnableSFX = GetCVar("Sound_EnableSFX")
-	local Sound_EnableAllSound = GetCVar("Sound_EnableAllSound")
-	local Sound_MasterVolume = GetCVar("Sound_MasterVolume")
-	local Sound_EnableSoundWhenGameIsInBG = GetCVar("Sound_EnableSoundWhenGameIsInBG")
-
-	-- If our master volume is set to 0.0 then we won't hear a damn thing.
-	if (Sound_MasterVolume == 0.0) then
-		self:Print(L["MASTERSOUNDOFF"])
-	end
-
-	-- If sound is off, we want to play the readycheck
-	if (Sound_EnableSFX == "0") then
-		-- If background sound is on, we can't do anything
-		if (Sound_EnableSoundWhenGameIsInBG == "0") then
-			self:Print(L["BGSNDON"])
-			SetCVar("Sound_EnableSoundWhenGameIsInBG", "1")
-		-- If the entire sound processing is off, we can't deal with it
-		elseif (Sound_EnableAllSound == "0") then
-			self:Print(L["ENABLESOUNDSYSTEM"])
-			SetCVar("Sound_EnableAllSound","1")
-			-- Disable all the other types of sounds
-			SetCVar("Sound_EnableSFX","0")
-			SetCVar("Sound_EnableAmbience","0")
-			SetCVar("Sound_EnableMusic","0")
-		-- We just have sound off so we can play it
-		else
-			PlaySoundFile("Sound\\interface\\ReadyCheck.wav", "Master")
-		end
-	end
+	PlayReadyCheck()
 
 end
 
 function addon:LFG_PROPOSAL_SHOW()
 
-	-- Hack, lets just call the ready check code so that we still play some sound
-	self:READY_CHECK()
+	PlayReadyCheck()
 
 end
 
 function addon:BATTLEFIELD_MGR_ENTRY_INVITE()
 
-	-- Hack, lets just call the ready check code so that we still play some sound
-	self:READY_CHECK()
+	PlayPVPSound()
 
 end
