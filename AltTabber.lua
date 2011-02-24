@@ -86,8 +86,13 @@ function addon:READY_CHECK()
 
 	local Sound_EnableSFX = GetCVar("Sound_EnableSFX")
 	local Sound_EnableAllSound = GetCVar("Sound_EnableAllSound")
+	local Sound_MasterVolume = GetCVar("Sound_MasterVolume")
 
-	-- Abuses a bug? in that PlaySoundFile will still play
+	-- If our master volume is set to 0.0 then we won't hear a damn thing.
+	if (Sound_MasterVolume == 0.0) then
+		self:Print(L["MASTERSOUNDOFF"])
+	end
+
 	-- If sound is off, we want to play the readycheck
 	if (Sound_EnableSFX == "0") then
 		-- If background sound is on, we can't do anything
