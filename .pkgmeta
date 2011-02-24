@@ -26,6 +26,8 @@ externals:
   url: svn://svn.wowace.com/wow/ace3/mainline/trunk/AceConsole-3.0
  libs/AceAddon-3.0:
   url: svn://svn.wowace.com/wow/ace3/mainline/trunk/AceAddon-3.0
+ libs/AceHook-3.0:
+  url: svn://svn.wowace.com/wow/ace3/mainline/trunk/AceHook-3.0
  libs/LibAboutPanel:
   url: git://git.curseforge.net/wow/libaboutpanel/mainline.git
   tag: latest
