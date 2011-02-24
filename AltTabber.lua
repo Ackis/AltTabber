@@ -1,15 +1,17 @@
 --[[
-
-****************************************************************************************
-Alt-Tabber
-
-File date: @file-date-iso@ 
+************************************************************************
+AltTabber.lua
+Core functions for Alt-Tabber
+************************************************************************
+File date: @file-date-iso@
+File hash: @file-abbreviated-hash@
+Project hash: @project-abbreviated-hash@
 Project version: @project-version@
-
-Author: Ackis
-
-****************************************************************************************
-
+************************************************************************
+Please see http://www.wowace.com/addons/alttaber/ for more information.
+************************************************************************
+This source code is released under All Rights Reserved.
+************************************************************************
 ]]
 
 local MODNAME	= "AltTabber"
