@@ -1,85 +1,52 @@
-local MODNAME	= "AltTabber"
+local debug = false
+--@debug@
+debug = true
+--@end-debug@
 
-local AL3		= LibStub("AceLocale-3.0")
+local L = LibStub("AceLocale-3.0"):NewLocale("AltTabber", "enUS", true, debug)
 
--- Localization
--- enUS stuff
-local L = AL3:NewLocale(MODNAME, "enUS", true)
+if not L then return end
 
-if L then
-	L["BGSNDON"] = "Enabling sound in background so you can hear ready checks while alt-tabbed."
-	L["ENABLESOUNDSYSTEM"] = "Sound system is not enabled.  Sound system must be enabled to hear sounds.  Enabling sound system (should not notice a difference in sounds that are played)."
-	L["MASTERSOUNDOFF"] = "Master sound is set to 0.  You need to adjust the sliders for the Master sound volume in order to hear anything."
+--@localization(locale="enUS", format="lua_additive_table", handle-unlocalized="english", escape-non-ascii=false, same-key-is-true=true)@
 
-	if GetLocale() == "enUS" or GetLocale() == "enGB" then return end
-end
+L = LibStub("AceLocale-3.0"):NewLocale("AltTabber", "deDE", false)
 
--- deDE stuff
-local L = AL3:NewLocale(MODNAME, "deDE")
+if not L then return end
 
-if L then
-	L["BGSNDON"] = "Enabling sound in background so you can hear ready checks while alt-tabbed."
-	L["ENABLESOUNDSYSTEM"] = "Sound system is not enabled.  Sound system must be enabled to hear sounds.  Enabling sound system (should not notice a difference in sounds that are played)."
-	L["MASTERSOUNDOFF"] = "Master sound is set to 0.  You need to adjust the sliders for the Master sound volume in order to hear anything."
-	return
-end
+--@localization(locale="deDE", format="lua_additive_table", handle-unlocalized="ignore", escape-non-ascii=false, same-key-is-true=true)@
 
--- frFR stuff
-local L = AL3:NewLocale(MODNAME, "frFR")
+L = LibStub("AceLocale-3.0"):NewLocale("AltTabber", "frFR", false)
 
-if L then
-	L["BGSNDON"] = "Enabling sound in background so you can hear ready checks while alt-tabbed."
-	L["ENABLESOUNDSYSTEM"] = "Sound system is not enabled.  Sound system must be enabled to hear sounds.  Enabling sound system (should not notice a difference in sounds that are played)."
-	L["MASTERSOUNDOFF"] = "Master sound is set to 0.  You need to adjust the sliders for the Master sound volume in order to hear anything."
-	return
-end
+if not L then return end
 
--- zhCN stuff
-local L = AL3:NewLocale(MODNAME, "zhCN")
+--@localization(locale="frFR", format="lua_additive_table", handle-unlocalized="ignore", escape-non-ascii=false, same-key-is-true=true)@
 
-if L then
-	L["BGSNDON"] = "Enabling sound in background so you can hear ready checks while alt-tabbed."
-	L["ENABLESOUNDSYSTEM"] = "Sound system is not enabled.  Sound system must be enabled to hear sounds.  Enabling sound system (should not notice a difference in sounds that are played)."
-	L["MASTERSOUNDOFF"] = "Master sound is set to 0.  You need to adjust the sliders for the Master sound volume in order to hear anything."
-	return
-end
+L = LibStub("AceLocale-3.0"):NewLocale("AltTabber", "zhCN", false)
 
--- zhTW stuff
-local L = AL3:NewLocale(MODNAME, "zhTW")
+if not L then return end
 
-if L then
-	L["BGSNDON"] = "Enabling sound in background so you can hear ready checks while alt-tabbed."
-	L["ENABLESOUNDSYSTEM"] = "Sound system is not enabled.  Sound system must be enabled to hear sounds.  Enabling sound system (should not notice a difference in sounds that are played)."
-	L["MASTERSOUNDOFF"] = "Master sound is set to 0.  You need to adjust the sliders for the Master sound volume in order to hear anything."
-	return
-end
+--@localization(locale="zhCN", format="lua_additive_table", handle-unlocalized="ignore", escape-non-ascii=false, same-key-is-true=true)@
 
--- koKR stuff
-local L = AL3:NewLocale(MODNAME, "koKR")
+L = LibStub("AceLocale-3.0"):NewLocale("AltTabber", "zhTW", false)
 
-if L then
-	L["BGSNDON"] = "Enabling sound in background so you can hear ready checks while alt-tabbed."
-	L["ENABLESOUNDSYSTEM"] = "Sound system is not enabled.  Sound system must be enabled to hear sounds.  Enabling sound system (should not notice a difference in sounds that are played)."
-	L["MASTERSOUNDOFF"] = "Master sound is set to 0.  You need to adjust the sliders for the Master sound volume in order to hear anything."
-	return
-end
+if not L then return end
 
--- esES stuff
-local L = AL3:NewLocale(MODNAME, "esES")
+--@localization(locale="zhTW", format="lua_additive_table", handle-unlocalized="ignore", escape-non-ascii=false, same-key-is-true=true)@
 
-if L then
-	L["BGSNDON"] = "Enabling sound in background so you can hear ready checks while alt-tabbed."
-	L["ENABLESOUNDSYSTEM"] = "Sound system is not enabled.  Sound system must be enabled to hear sounds.  Enabling sound system (should not notice a difference in sounds that are played)."
-	L["MASTERSOUNDOFF"] = "Master sound is set to 0.  You need to adjust the sliders for the Master sound volume in order to hear anything."
-	return
-end
+L = LibStub("AceLocale-3.0"):NewLocale("AltTabber", "koKR", false)
 
--- esMX stuff
-local L = AL3:NewLocale(MODNAME, "esMX")
+if not L then return end
 
-if L then
-	L["BGSNDON"] = "Enabling sound in background so you can hear ready checks while alt-tabbed."
-	L["ENABLESOUNDSYSTEM"] = "Sound system is not enabled.  Sound system must be enabled to hear sounds.  Enabling sound system (should not notice a difference in sounds that are played)."
-	L["MASTERSOUNDOFF"] = "Master sound is set to 0.  You need to adjust the sliders for the Master sound volume in order to hear anything."
-	return
-end
+--@localization(locale="koKR", format="lua_additive_table", handle-unlocalized="ignore", escape-non-ascii=false, same-key-is-true=true)@
+
+L = LibStub("AceLocale-3.0"):NewLocale("AltTabber", "esES", false)
+
+if not L then return end
+
+--@localization(locale="esES", format="lua_additive_table", handle-unlocalized="ignore", escape-non-ascii=false, same-key-is-true=true)@
+
+L = LibStub("AceLocale-3.0"):NewLocale("AltTabber", "esMX", false)
+
+if not L then return end
+
+--@localization(locale="esMX", format="lua_additive_table", handle-unlocalized="ignore", escape-non-ascii=false, same-key-is-true=true)@
