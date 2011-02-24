@@ -14,7 +14,7 @@ Author: Ackis
 
 local MODNAME	= "AltTabber"
 
-AltTabber		= LibStub("AceAddon-3.0"):NewAddon(MODNAME, "AceConsole-3.0", "AceEvent-3.0")
+AltTabber		= LibStub("AceAddon-3.0"):NewAddon(MODNAME, "AceConsole-3.0", "AceEvent-3.0", "AceHook-3.0")
 
 local addon		= LibStub("AceAddon-3.0"):GetAddon(MODNAME)
 local AL3		= LibStub("AceLocale-3.0")
@@ -35,6 +35,10 @@ function addon:OnInitialize()
 
 end
 
+local function PlayPVPSound()
+	PlaySoundFile("Sound\\Spells\\PVPEnterQueue.wav", "Master")
+end
+
 function addon:OnEnable()
 
 	self:RegisterEvent("READY_CHECK")
@@ -44,9 +48,7 @@ function addon:OnEnable()
 	-- Hook each battleground queue so that it plays a sound when the pop-up shows up.
 	for index = 1, NUM_DISPLAYED_BATTLEGROUNDS do
 		local frame = _G["PVPHonorFrameBgButton"..index]
-		frame:SetScript("OnShow", function()
-				PlaySoundFile("Sound\\Spells\\PVPEnterQueue.wav", "Master")
-			end)
+		self:HookScript(frame, "OnShow", PlayPVPSound)
 	end
 
 --[[
