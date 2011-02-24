@@ -41,13 +41,22 @@ function addon:OnEnable()
 	self:RegisterEvent("LFG_PROPOSAL_SHOW")
 	self:RegisterEvent("BATTLEFIELD_MGR_ENTRY_INVITE") -- World PVP (Tol Barad, WG)
 
+	-- Hook each battleground queue so that it plays a sound when the pop-up shows up.
+	for index = 1, NUM_DISPLAYED_BATTLEGROUNDS do
+		local frame = _G["PVPHonorFrameBgButton"..index]
+		frame:SetScript("OnShow", function()
+				PlaySoundFile("Sound\\Spells\\PVPEnterQueue.wav", "Master")
+			end)
+	end
+
+--[[
 	-- If the Battlefield Entry doesn't have an onshow, create one.
 	if (not StaticPopupDialogs["CONFIRM_BATTLEFIELD_ENTRY"].OnShow) then
 		StaticPopupDialogs["CONFIRM_BATTLEFIELD_ENTRY"].OnShow = function()
 			PlaySoundFile("Sound\\Spells\\PVPEnterQueue.wav", "Master")
 		end
 	end
-
+]]--
 end
 
 function addon:READY_CHECK()
