@@ -25,13 +25,40 @@ local GetCVar = GetCVar
 local SetCVar = SetCVar
 local PlaySoundFile = PlaySoundFile
 
-function addon:OnInitialize()
+-------------------------------------------------------------------------------
+-- Check to see if we have mandatory libraries loaded. If not, notify the user
+-- which are missing and return.
+-------------------------------------------------------------------------------
+local MissingLibraries
+do
+	local REQUIRED_LIBS = {
+		"AceLocale-3.0",
+		"AceEvent-3.0",
+		"AceConsole-3.0",
+		"AceHook-3.0",
+	}
+	function MissingLibraries()
+		local missing = false
 
-	if LibStub:GetLibrary("LibAboutPanel", true) then
-		LibStub("LibAboutPanel").new(nil, MODNAME)
-	else
-		self:Print("Lib AboutPanel not loaded.")
+		for idx, lib in ipairs(REQUIRED_LIBS) do
+			if not LibStub:GetLibrary(lib, true) then
+				missing = true
+				addon:Print(strformat(L["MISSING_LIBRARY"], lib))
+			end
+		end
+		return missing
 	end
+end -- do
+
+if MissingLibraries() then
+	--@debug@
+	addon:Print("You are using a development version of Alt-Tabber.  As per WowAce standards, externals are not set up.  You will have to install all necessary libraries in order for the addon to function correctly.")
+	--@end-debug@
+	_G.AltTabber = nil
+	return
+end
+
+function addon:OnInitialize()
 
 end
 
@@ -46,6 +73,8 @@ function addon:OnEnable()
 	self:RegisterEvent("BATTLEFIELD_MGR_ENTRY_INVITE") -- World PVP (Tol Barad, WG)
 
 	-- Hook each battleground queue so that it plays a sound when the pop-up shows up.
+	-- This will play a sound for when the BG queue pops for you
+	-- Code should also work when new battlegrounds are added
 	for index = 1, NUM_DISPLAYED_BATTLEGROUNDS do
 		local frame = _G["PVPHonorFrameBgButton"..index]
 		self:HookScript(frame, "OnShow", PlayPVPSound)
