@@ -74,7 +74,7 @@ local function CheckCVars()
 
 	-- If our master volume is set to 0.0 then we won't hear a damn thing.
 	if (Sound_MasterVolume == 0.0) then
-		self:Print(L["MASTERSOUNDOFF"])
+		addon:Print(L["MASTERSOUNDOFF"])
 	end
 
 	-- If sound is off, we want to play the readycheck
@@ -83,14 +83,14 @@ local function CheckCVars()
 		-- If background sound is off, we can't do anything
 		-- Set the background sound to on and inform the user
 		if (Sound_EnableSoundWhenGameIsInBG == "0") then
-			self:Print(L["BGSNDON"])
+			addon:Print(L["BGSNDON"])
 			SetCVar("Sound_EnableSoundWhenGameIsInBG", "1")
 			return false
 
 		-- If the entire sound processing is off, we can't play sound.
 		-- Set the 
 		elseif (Sound_EnableAllSound == "0") then
-			self:Print(L["ENABLESOUNDSYSTEM"])
+			addon:Print(L["ENABLESOUNDSYSTEM"])
 			SetCVar("Sound_EnableAllSound","1")
 			-- Disable all the other types of sounds
 			SetCVar("Sound_EnableSFX","0")
