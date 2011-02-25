@@ -130,11 +130,13 @@ function addon:OnEnable()
 	-- Hook each battleground queue so that it plays a sound when the pop-up shows up.
 	-- This will play a sound for when the BG queue pops for you
 	-- Code should also work when new battlegrounds are added
+-- CONFIRM_BATTLEFIELD_ENTRY
+--[[
 	for index = 1, NUM_DISPLAYED_BATTLEGROUNDS do
 		local frame = _G["PVPHonorFrameBgButton"..index]
 		self:HookScript(frame, "OnShow", PlayPVPSound)
 	end
-
+]]--
 end
 
 function addon:READY_CHECK()
