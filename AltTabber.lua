@@ -147,7 +147,8 @@ function addon:OnEnable()
 ]]--
 
 	-- Hook into the battleground pvp queue window
-	self:HookScript(StaticPopupDialogs["CONFIRM_BATTLEFIELD_ENTRY"], "OnShow", PlayPVPSound)
+	self:SecureHook(StaticPopupDialogs["CONFIRM_BATTLEFIELD_ENTRY"], "OnShow", PlayPVPSound)
+
 end
 
 function addon:READY_CHECK()
