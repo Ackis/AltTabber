@@ -35,14 +35,14 @@
 
 ## X-Donate: http://www.curseforge.com/projects/alttab/#w_donations
 
-## Interface: 40200
-## X-Compatible-With: 40200
+## Interface: 40300
+## X-Compatible-With: 40300
 ## Version: @project-version@
 ## X-Revision: @project-abbreviated-hash@
 ## X-Date: @file-date-iso@
 
 ## X-Category: Raid
-## X-Localizations: enUS, frFR, deDE, koKR, ruRU, zhCN, esES, zhTW
+## X-Localizations: enUS, frFR, deDE, koKR, ruRU, zhCN, esES, zhTW, ptBR, esMX
 ## X-Website: http://www.wowpedia.org/AltTabber/
 ## X-Feedback: http://wow.curse.com/downloads/wow-addons/details/alttab.aspx
 
