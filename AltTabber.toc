@@ -31,12 +31,12 @@
 ## Author: Ackis
 ## eMail: ackis AT shaw DOT ca
 ## X-Author-Faction: Horde
-## X-Author-Server: Scarlet Crusade US
+## X-Author-Server: Hyjal US
 
 ## X-Donate: http://www.curseforge.com/projects/alttab/#w_donations
 
-## Interface: 40300
-## X-Compatible-With: 40300
+## Interface: 50001
+## X-Compatible-With: 50001
 ## Version: @project-version@
 ## X-Revision: @project-abbreviated-hash@
 ## X-Date: @file-date-iso@
