@@ -65,7 +65,7 @@ function addon:OnInitialize()
 end
 
 -- Checks the CVars to determine if we can actually play sound.
-local function CheckCVars()
+local function CheckCVars(sound_on)
 
 	local Sound_EnableSFX = GetCVar("Sound_EnableSFX")
 	local Sound_EnableAllSound = GetCVar("Sound_EnableAllSound")
@@ -78,8 +78,7 @@ local function CheckCVars()
 	end
 
 	-- If sound is off, we want to play the readycheck
-	if (Sound_EnableSFX == "0") then
-
+	if (Sound_EnableSFX == "0") and not sound_on then
 		-- If background sound is off, we can't do anything
 		-- Set the background sound to on and inform the user
 		if (Sound_EnableSoundWhenGameIsInBG == "0") then
@@ -88,7 +87,7 @@ local function CheckCVars()
 			return false
 
 		-- If the entire sound processing is off, we can't play sound.
-		-- Set the 
+		-- Set the variables and inform the user
 		elseif (Sound_EnableAllSound == "0") then
 			addon:Print(L["ENABLESOUNDSYSTEM"])
 			SetCVar("Sound_EnableAllSound","1")
@@ -97,26 +96,32 @@ local function CheckCVars()
 			SetCVar("Sound_EnableAmbience","0")
 			SetCVar("Sound_EnableMusic","0")
 			return false
-
 		-- We just have sound off, but conditions are correct so we will
 		-- hear the sounds.
 		else
 			return true
 		end
+	-- Sound is on but we want the notification anyways
+	-- Useful for things like the Brawler's guild where there is no
+	-- default sound played.
+	elseif sound_on then
+		return true
+	else
+		return false
 	end
 
 end
 
 -- Plays the PVP queue popping sound.
-local function PlayPVPSound()
-	if CheckCVars() then
+local function PlayPVPSound(sound_on)
+	if CheckCVars(sound_on) then
 		PlaySoundFile("Sound\\Spells\\PVPEnterQueue.wav", "Master")
 	end
 end
 
 -- Plays the ready check sound
-local function PlayReadyCheck()
-	if CheckCVars() then
+local function PlayReadyCheck(sound_on)
+	if CheckCVars(sound_on) then
 		PlaySoundFile("Sound\\interface\\ReadyCheck.wav", "Master")
 	end
 end
@@ -126,6 +131,7 @@ function addon:OnEnable()
 	self:RegisterEvent("READY_CHECK") -- Raid Ready Checks
 	self:RegisterEvent("LFG_PROPOSAL_SHOW") -- LFG System
 	self:RegisterEvent("BATTLEFIELD_MGR_ENTRY_INVITE") -- World PVP (Tol Barad, WG)
+	self:RegisterEvent("CHAT_MSG_RAID_BOSS_WHISPER") -- Brawler guild message from boss
 
 	-- Hook each battleground queue so that it plays a sound when the pop-up shows up.
 	-- This will play a sound for when the BG queue pops for you
@@ -152,19 +158,22 @@ function addon:OnEnable()
 end
 
 function addon:READY_CHECK()
-
 	PlayReadyCheck()
-
 end
 
 function addon:LFG_PROPOSAL_SHOW()
-
 	PlayReadyCheck()
-
 end
 
 function addon:BATTLEFIELD_MGR_ENTRY_INVITE()
-
 	PlayPVPSound()
+end
 
+function addon:CHAT_MSG_RAID_BOSS_WHISPER(a,msg)
+print(a)
+print(msg)
+	if msg == "You are next in line!" then
+	print(msg)
+		PlayReadyCheck(true)
+	end
 end
