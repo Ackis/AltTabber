@@ -169,9 +169,7 @@ function addon:BATTLEFIELD_MGR_ENTRY_INVITE()
 	PlayPVPSound()
 end
 
-function addon:CHAT_MSG_RAID_BOSS_WHISPER(a,msg)
-print(a)
-print(msg)
+function addon:CHAT_MSG_RAID_BOSS_WHISPER(_,msg)
 	if msg == "You are next in line!" then
 	print(msg)
 		PlayReadyCheck(true)
