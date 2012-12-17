@@ -171,7 +171,6 @@ end
 
 function addon:CHAT_MSG_RAID_BOSS_WHISPER(_,msg)
 	if msg == "You are next in line!" then
-	print(msg)
 		PlayReadyCheck(true)
 	end
 end
