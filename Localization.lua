@@ -56,3 +56,15 @@ L = LibStub("AceLocale-3.0"):NewLocale("AltTabber", "ptBR", false)
 if not L then return end
 
 --@localization(locale="ptBR", format="lua_additive_table", handle-unlocalized="ignore", escape-non-ascii=false, same-key-is-true=true)@
+
+L = LibStub("AceLocale-3.0"):NewLocale("AltTabber", "itIT", false)
+
+if not L then return end
+
+--@localization(locale="itIT", format="lua_additive_table", handle-unlocalized="ignore", escape-non-ascii=false, same-key-is-true=true)@
+
+L = LibStub("AceLocale-3.0"):NewLocale("AltTabber", "ruRU", false)
+
+if not L then return end
+
+--@localization(locale="ruRU", format="lua_additive_table", handle-unlocalized="ignore", escape-non-ascii=false, same-key-is-true=true)@
