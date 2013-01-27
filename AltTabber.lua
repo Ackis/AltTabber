@@ -170,7 +170,7 @@ function addon:BATTLEFIELD_MGR_ENTRY_INVITE()
 end
 
 function addon:CHAT_MSG_RAID_BOSS_WHISPER(_,msg)
-	if msg == "You are next in line!" then
+	if msg == L["You are next in line!"] then
 		PlayReadyCheck(true)
 	end
 end
