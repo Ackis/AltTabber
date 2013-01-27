@@ -14,6 +14,8 @@ This source code is released under All Rights Reserved.
 ************************************************************************
 ]]
 
+local LibStub = _G.LibStub
+
 local MODNAME	= "AltTabber"
 
 AltTabber		= LibStub("AceAddon-3.0"):NewAddon(MODNAME, "AceConsole-3.0", "AceEvent-3.0", "AceHook-3.0")
@@ -22,6 +24,10 @@ local addon		= LibStub("AceAddon-3.0"):GetAddon(MODNAME)
 local AL3		= LibStub("AceLocale-3.0")
 
 local L = AL3:GetLocale(MODNAME, false)
+
+--@alpha@
+_G.AT = addon
+--@end-alpha@
 
 local GetCVar = GetCVar
 local SetCVar = SetCVar
@@ -132,6 +138,7 @@ function addon:OnEnable()
 	self:RegisterEvent("LFG_PROPOSAL_SHOW") -- LFG System
 	self:RegisterEvent("BATTLEFIELD_MGR_ENTRY_INVITE") -- World PVP (Tol Barad, WG)
 	self:RegisterEvent("CHAT_MSG_RAID_BOSS_WHISPER") -- Brawler guild message from boss
+	self:RegisterEvent("PET_BATTLE_QUEUE_STATUS") -- PVP Pet Battles
 
 	-- Hook each battleground queue so that it plays a sound when the pop-up shows up.
 	-- This will play a sound for when the BG queue pops for you
@@ -155,6 +162,13 @@ function addon:OnEnable()
 	-- Hook into the battleground pvp queue window
 	self:SecureHook(StaticPopupDialogs["CONFIRM_BATTLEFIELD_ENTRY"], "OnShow", PlayPVPSound)
 
+end
+
+function addon:PET_BATTLE_QUEUE_STATUS()
+	local queue = C_PetBattles.GetPVPMatchmakingInfo()
+	if queue == "proposal" then
+		PlayReadyCheck()
+	end
 end
 
 function addon:READY_CHECK()
