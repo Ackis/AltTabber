@@ -167,7 +167,7 @@ end
 function addon:PET_BATTLE_QUEUE_STATUS()
 	local queue = C_PetBattles.GetPVPMatchmakingInfo()
 	if queue == "proposal" then
-		PlayReadyCheck()
+		PlayReadyCheck(true)
 	end
 end
 
