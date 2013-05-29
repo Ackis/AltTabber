@@ -137,7 +137,6 @@ function addon:OnEnable()
 	self:RegisterEvent("READY_CHECK") -- Raid Ready Checks
 	self:RegisterEvent("LFG_PROPOSAL_SHOW") -- LFG System
 	self:RegisterEvent("BATTLEFIELD_MGR_ENTRY_INVITE") -- World PVP (Tol Barad, WG)
-	self:RegisterEvent("CHAT_MSG_RAID_BOSS_WHISPER") -- Brawler guild message from boss
 	self:RegisterEvent("UNIT_AURA") -- Brawler guild message from boss
 	self:RegisterEvent("PET_BATTLE_QUEUE_STATUS") -- PVP Pet Battles
 
@@ -182,12 +181,6 @@ end
 
 function addon:BATTLEFIELD_MGR_ENTRY_INVITE()
 	PlayPVPSound()
-end
-
-function addon:CHAT_MSG_RAID_BOSS_WHISPER(_,msg)
-	if msg == L["You are next in line!"] then
-		PlayReadyCheck(true)
-	end
 end
 
 -- Brawler's Guild Buff
