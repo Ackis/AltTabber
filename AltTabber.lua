@@ -148,25 +148,6 @@ function addon:OnEnable()
 	self:RegisterEvent("ZONE_CHANGED_INDOORS")
 	self:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 
-	-- Hook each battleground queue so that it plays a sound when the pop-up shows up.
-	-- This will play a sound for when the BG queue pops for you
-	-- Code should also work when new battlegrounds are added
---[[
-	for index = 1, NUM_DISPLAYED_BATTLEGROUNDS do
-		local frame = _G["PVPHonorFrameBgButton"..index]
-		self:HookScript(frame, "OnShow", PlayPVPSound)
-	end
-]]--
-
---[[
-	-- If the Battlefield Entry doesn't have an onshow, create one.
-	if (not StaticPopupDialogs["CONFIRM_BATTLEFIELD_ENTRY"].OnShow) then
-		StaticPopupDialogs["CONFIRM_BATTLEFIELD_ENTRY"].OnShow = function()
-			PlaySoundFile("Sound\\Spells\\PVPEnterQueue.wav", "Master")
-		end
-	end
-]]--
-
 	-- Hook into the battleground pvp queue window
 	self:SecureHook(StaticPopupDialogs["CONFIRM_BATTLEFIELD_ENTRY"], "OnShow", PlayPVPSound)
 
