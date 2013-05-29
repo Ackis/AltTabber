@@ -32,6 +32,9 @@ _G.AT = addon
 local GetCVar = GetCVar
 local SetCVar = SetCVar
 local PlaySoundFile = PlaySoundFile
+local GetCurrentMapAreaID = GetCurrentMapAreaID
+
+local BrawlerLocationEnabled = false
 
 -------------------------------------------------------------------------------
 -- Check to see if we have mandatory libraries loaded. If not, notify the user
@@ -137,8 +140,13 @@ function addon:OnEnable()
 	self:RegisterEvent("READY_CHECK") -- Raid Ready Checks
 	self:RegisterEvent("LFG_PROPOSAL_SHOW") -- LFG System
 	self:RegisterEvent("BATTLEFIELD_MGR_ENTRY_INVITE") -- World PVP (Tol Barad, WG)
-	self:RegisterEvent("UNIT_AURA") -- Brawler guild message from boss
 	self:RegisterEvent("PET_BATTLE_QUEUE_STATUS") -- PVP Pet Battles
+
+	-- Check zones for the Brawler's Guild.
+	-- We don't want to always scan for buffs.
+	self:RegisterEvent("ZONE_CHANGED")
+	self:RegisterEvent("ZONE_CHANGED_INDOORS")
+	self:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 
 	-- Hook each battleground queue so that it plays a sound when the pop-up shows up.
 	-- This will play a sound for when the BG queue pops for you
@@ -181,6 +189,32 @@ end
 
 function addon:BATTLEFIELD_MGR_ENTRY_INVITE()
 	PlayPVPSound()
+end
+
+function BrawlersGuildEvents(currentZone)
+	-- We're in the Brawler's Guild
+	if currentZone == 922 or currentZone == 925 then
+		BrawlerLocationEnabled = true
+		addon:RegisterEvent("UNIT_AURA")
+	-- Not in the Brawler's guild and we're checking for buffs
+	elseif BrawlerLocationEnabled then
+		addon:UnregisterEvent("UNIT_AURA")
+	end
+end
+
+function addon:ZONE_CHANGED()
+	local currentZone = GetCurrentMapAreaID()
+	BrawlersGuildEvents(currentZone)
+end
+
+function addon:ZONE_CHANGED_INDOORS()
+	local currentZone = GetCurrentMapAreaID()
+	BrawlersGuildEvents(currentZone)
+end
+
+function addon:ZONE_CHANGED_NEW_AREA()
+	local currentZone = GetCurrentMapAreaID()
+	BrawlersGuildEvents(currentZone)
 end
 
 -- Brawler's Guild Buff
