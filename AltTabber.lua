@@ -138,6 +138,7 @@ function addon:OnEnable()
 	self:RegisterEvent("LFG_PROPOSAL_SHOW") -- LFG System
 	self:RegisterEvent("BATTLEFIELD_MGR_ENTRY_INVITE") -- World PVP (Tol Barad, WG)
 	self:RegisterEvent("CHAT_MSG_RAID_BOSS_WHISPER") -- Brawler guild message from boss
+	self:RegisterEvent("UNIT_AURA") -- Brawler guild message from boss
 	self:RegisterEvent("PET_BATTLE_QUEUE_STATUS") -- PVP Pet Battles
 
 	-- Hook each battleground queue so that it plays a sound when the pop-up shows up.
@@ -185,6 +186,17 @@ end
 
 function addon:CHAT_MSG_RAID_BOSS_WHISPER(_,msg)
 	if msg == L["You are next in line!"] then
+		PlayReadyCheck(true)
+	end
+end
+
+-- Brawler's Guild Buff
+local QueuedBuff = GetSpellInfo(132639)
+
+-- Code developed from MysticalOS DBM-Brawler's Guild Module with permission
+function addon:UNIT_AURA(uId)
+	local currentQueueRank = select(15, UnitBuff("player", QueuedBuff))
+	if currentQueueRank == 1 then
 		PlayReadyCheck(true)
 	end
 end
