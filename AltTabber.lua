@@ -200,11 +200,15 @@ end
 
 -- Brawler's Guild Buff
 local QueuedBuff = GetSpellInfo(132639)
+local WarningGiven = false
 
 -- Code developed from MysticalOS DBM-Brawler's Guild Module with permission
 function addon:UNIT_AURA(uId)
 	local currentQueueRank = select(15, UnitBuff("player", QueuedBuff))
-	if currentQueueRank == 1 then
+	if currentQueueRank == 1 and not WarningGiven then
 		PlayReadyCheck(true)
+		WarningGiven = true
+	elseif currentQueueRank ~= 1 then
+		WarningGiven = false
 	end
 end
