@@ -147,6 +147,7 @@ function addon:OnEnable()
 	self:RegisterEvent("ZONE_CHANGED")
 	self:RegisterEvent("ZONE_CHANGED_INDOORS")
 	self:RegisterEvent("ZONE_CHANGED_NEW_AREA")
+	self:RegisterEvent("PLAYER_ENTERING_WORLD")
 
 	-- Hook into the battleground pvp queue window
 	self:SecureHook(StaticPopupDialogs["CONFIRM_BATTLEFIELD_ENTRY"], "OnShow", PlayPVPSound)
@@ -194,6 +195,11 @@ function addon:ZONE_CHANGED_INDOORS()
 end
 
 function addon:ZONE_CHANGED_NEW_AREA()
+	local currentZone = GetCurrentMapAreaID()
+	BrawlersGuildEvents(currentZone)
+end
+
+function addon:PLAYER_ENTERING_WORLD()
 	local currentZone = GetCurrentMapAreaID()
 	BrawlersGuildEvents(currentZone)
 end
