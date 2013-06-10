@@ -214,4 +214,3 @@ function addon:UNIT_AURA(uId)
 		WarningGiven = false
 	end
 end
-select(15, UnitBuff("player", GetSpellInfo(132639)))
