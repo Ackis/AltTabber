@@ -87,7 +87,7 @@ local function CheckCVars(sound_on)
 	end
 
 	-- If sound is off, we want to play the readycheck
-	if (Sound_EnableSFX == "0") and not sound_on then
+	if ((Sound_EnableSFX == "0") and (not sound_on)) then
 		-- If background sound is off, we can't do anything
 		-- Set the background sound to on and inform the user
 		if (Sound_EnableSoundWhenGameIsInBG == "0") then
