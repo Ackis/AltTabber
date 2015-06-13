@@ -32,14 +32,14 @@
 #@end-debug@
 
 ## Author: Ackis
-## eMail: ackis AT shaw DOT ca
+## eMail: ackis81 AT gmail DOT com
 ## X-Author-Faction: Horde
 ## X-Author-Server: Hyjal US
 
 ## X-Donate: http://www.curseforge.com/projects/alttab/#w_donations
 
-## Interface: 50300
-## X-Compatible-With: 50300
+## Interface: 60100
+## X-Compatible-With: 60100
 ## Version: @project-version@
 ## X-Revision: @project-abbreviated-hash@
 ## X-Date: @file-date-iso@
