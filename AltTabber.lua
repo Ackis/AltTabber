@@ -124,14 +124,14 @@ end
 -- Plays the PVP queue popping sound.
 local function PlayPVPSound(sound_on)
 	if CheckCVars(sound_on) then
-		PlaySound("PVPEnterQueue", "Master")
+		PlaySound(PlaySoundKitID and "PVPEnterQueue" or 8458, "Master")
 	end
 end
 
 -- Plays the ready check sound
 local function PlayReadyCheck(sound_on)
 	if CheckCVars(sound_on) then
-		PlaySound("ReadyCheck", "Master")
+		PlaySound(PlaySoundKitID and "ReadyCheck" or 8960, "Master")
 	end
 end
 
